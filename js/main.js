@@ -1,22 +1,20 @@
 $(function(){
+	
+	// user object
+	var User = {
+    	handle: '@bradwestfall',
+    	img: 'images/brad.png'
+	}
 
-	// Toggle classes to expand tweets and compose sections
-	$('.tweets').on('click', '.thread .tweet', function(){
-		$(this).siblings().toggleClass('show');
-	});
-
-	$('body').on('click', '.compose', function(){
-		$(this).toggleClass('expand');
-	});
 
 	// Render template functions
-	var renderTweet = function(message){
+	var renderTweet = function(message, User){
 		var source = $('#template-tweet').html();
 		var template = Handlebars.compile(source);
 		var output = template({
-			title: '@ROCKIT_BOOTCAMP',
+			title: User.handle,
 			message: message,
-			img: 'images/rockit.png'
+			img: User.img
 		});
 		return output;
 	};
@@ -28,28 +26,31 @@ $(function(){
 		return output;
 	};
 
-	var renderThread = function (message){
+	var renderThread = function (message, User){
 		var source = $('#template-thread').html();
 		var template = Handlebars.compile(source);
 		var output = template({
 			compose: renderCompose,
-			tweet: renderTweet(message)
+			tweet: renderTweet(message, User)
 			});
 		return output;
 	};
 
-	// user object
-	var User = {
-    handle: '@bradwestfall',
-    img: 'brad.png'
-	}
+	// Toggle classes to expand tweets and compose sections
+	$('.tweets').on('click', '.thread .tweet', function(){
+		$(this).parents('.thread').toggleClass('expand');
+	});
+
+	$('body').on('click', '.compose', function(){
+		$(this).toggleClass('expand');
+	});
 
 
 	// event handlers
 	$('header > form').on('submit', function(event) {
 		event.preventDefault();
 		var message = $('textarea').val();
-		var output = renderThread(message);
+		var output = renderThread(message, User);
 		$('.tweets').prepend(output); 
 		$('textarea').val('');
 	});
@@ -57,7 +58,7 @@ $(function(){
 	$('.tweets').on('submit', '.replies', function(event) {
 		event.preventDefault();
 		var message = $(this).find('textarea').val();
-		var output = renderTweet(message);
+		var output = renderTweet(message, User);
 		$(this).find('form').after(output); 
 		console.log(message);
 		$('textarea').val('');
