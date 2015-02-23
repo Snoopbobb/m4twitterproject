@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js"></script>
+	<script src ="main2.js"></script>
+</head>
+<body>
+	<form>
+		<textarea placeholder="Type A Tweet"></textarea>
+		<button>Handlebars</button>
+	</form>
+	<script id="template-tweet" type="text/x-handlebars-template">
+		<div class="tweet">{{message}}</div>		
+	</script>
+	<script id="template-thread" type="text/x-handlebars-template">
+		<div class="thread">
+			{{{tweet}}}
+			<div class="replies">
+			compose
+			</div>
+		</div>	
+	</script>
+</body>
+</html>
