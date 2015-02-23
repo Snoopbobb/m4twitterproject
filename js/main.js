@@ -14,9 +14,9 @@ $(function(){
 		var source = $('#template-tweet').html();
 		var template = Handlebars.compile(source);
 		var output = template({
-			title: '@ROCKIT_BOOTCAMP',
+			title: User.handle,
 			message: message,
-			img: 'images/rockit.png'
+			img: User.img
 		});
 		return output;
 	};
@@ -41,7 +41,7 @@ $(function(){
 	// user object
 	var User = {
     handle: '@bradwestfall',
-    img: 'brad.png'
+    img: 'images/brad.png'
 	}
 
 
