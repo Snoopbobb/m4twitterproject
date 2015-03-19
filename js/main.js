@@ -36,13 +36,6 @@ $(function(){
 		return output;
 	};
 
-<<<<<<< HEAD
-	// user object
-	var User = {
-    handle: '@bradwestfall',
-    img: 'images/brad.png'
-	}
-=======
 	// Toggle classes to expand tweets and compose sections
 	$('.tweets').on('click', '.thread .tweet', function(){
 		$(this).parents('.thread').toggleClass('expand');
@@ -51,7 +44,6 @@ $(function(){
 	$('body').on('click', '.compose', function(){
 		$(this).toggleClass('expand');
 	});
->>>>>>> master
 
 
 	// event handlers
