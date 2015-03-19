@@ -2,8 +2,8 @@ $(function(){
 	
 	// user object
 	var User = {
-    	handle: '@bradwestfall',
-    	img: 'images/brad.png'
+    	handle: '@bobtabor',
+    	img: 'images/Bob.jpg'
 	}
 
 
